@@ -43,6 +43,7 @@ extern cvar_t gl_texturemode;
 extern cvar_t gl_texture_anisotropy;
 extern cvar_t host_maxfps;
 extern cvar_t scr_showfps;
+extern cvar_t scr_showspeed;
 extern cvar_t vid_width;
 extern cvar_t vid_height;
 extern cvar_t vid_refreshrate;
@@ -3243,6 +3244,7 @@ void M_Menu_Gamepad_f (void)
 	def (VID_OPT_SOFTEMU,		"8-bit Mode")		\
 	def (VID_OPT_FPSLIMIT,		"FPS Limit")		\
 	def (VID_OPT_SHOWFPS,		"Show FPS")			\
+	def (VID_OPT_SHOWSPEED,		"Show Speed")		\
 ////////////////////////////////////////////////////
 #define GPAD_OPTIONS_LIST(def)						\
 	def(GPAD_OPT_DEVICE,		"Gamepad")			\
@@ -3725,6 +3727,9 @@ void M_AdjustSliders (int dir)
 	case VID_OPT_SHOWFPS:
 		Cbuf_AddText ("toggle scr_showfps\n");
 		break;
+	case VID_OPT_SHOWSPEED:
+		Cbuf_AddText ("toggle scr_showspeed\n");
+		break;
 
 	//
 	// Gamepad Options
@@ -4160,6 +4165,9 @@ static void M_Options_DrawItem (int y, int item)
 		break;
 	case VID_OPT_SHOWFPS:
 		M_Print (x, y, scr_showfps.value ? "On" : "Off");
+		break;
+	case VID_OPT_SHOWSPEED:
+		M_Print (x, y, scr_showspeed.value ? "On" : "Off");
 		break;
 
 	//
